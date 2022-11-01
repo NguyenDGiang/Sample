@@ -1,0 +1,3 @@
+dotnet ef migrations add "SampleMigration" -p Sample.DataAccess --startup-project Sample.API -o Persistence/Migrations
+dotnet ef migrations remove -p Ordering.Infrastructure --startup-project Ordering.API
+dotnet ef database update -p Sample.DataAccess --startup-project Sample.API

@@ -1,0 +1,12 @@
+F:\Hoc\Sample\Sample.Shared\bin\Debug\net6.0\Sample.Shared.deps.json
+F:\Hoc\Sample\Sample.Shared\bin\Debug\net6.0\Sample.Shared.dll
+F:\Hoc\Sample\Sample.Shared\bin\Debug\net6.0\Sample.Shared.pdb
+F:\Hoc\Sample\Sample.Shared\obj\Debug\net6.0\Sample.Shared.csproj.AssemblyReference.cache
+F:\Hoc\Sample\Sample.Shared\obj\Debug\net6.0\Sample.Shared.GeneratedMSBuildEditorConfig.editorconfig
+F:\Hoc\Sample\Sample.Shared\obj\Debug\net6.0\Sample.Shared.AssemblyInfoInputs.cache
+F:\Hoc\Sample\Sample.Shared\obj\Debug\net6.0\Sample.Shared.AssemblyInfo.cs
+F:\Hoc\Sample\Sample.Shared\obj\Debug\net6.0\Sample.Shared.csproj.CoreCompileInputs.cache
+F:\Hoc\Sample\Sample.Shared\obj\Debug\net6.0\Sample.Shared.dll
+F:\Hoc\Sample\Sample.Shared\obj\Debug\net6.0\refint\Sample.Shared.dll
+F:\Hoc\Sample\Sample.Shared\obj\Debug\net6.0\Sample.Shared.pdb
+F:\Hoc\Sample\Sample.Shared\obj\Debug\net6.0\ref\Sample.Shared.dll
