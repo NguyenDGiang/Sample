@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "F:\\Hoc\\Sample\\Sample.Shared\\Sample.Shared.csproj": {}
+    "E:\\Sample\\Sample\\Sample.Shared\\Sample.Shared.csproj": {}
   },
   "projects": {
-    "F:\\Hoc\\Sample\\Sample.Shared\\Sample.Shared.csproj": {
+    "E:\\Sample\\Sample\\Sample.Shared\\Sample.Shared.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "F:\\Hoc\\Sample\\Sample.Shared\\Sample.Shared.csproj",
+        "projectUniqueName": "E:\\Sample\\Sample\\Sample.Shared\\Sample.Shared.csproj",
         "projectName": "Sample.Shared",
-        "projectPath": "F:\\Hoc\\Sample\\Sample.Shared\\Sample.Shared.csproj",
+        "projectPath": "E:\\Sample\\Sample\\Sample.Shared\\Sample.Shared.csproj",
         "packagesPath": "C:\\Users\\nguye\\.nuget\\packages\\",
-        "outputPath": "F:\\Hoc\\Sample\\Sample.Shared\\obj\\",
+        "outputPath": "E:\\Sample\\Sample\\Sample.Shared\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\nguye\\AppData\\Roaming\\NuGet\\NuGet.Config",

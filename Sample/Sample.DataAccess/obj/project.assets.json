@@ -2308,11 +2308,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "F:\\Hoc\\Sample\\Sample.DataAccess\\Sample.DataAccess.csproj",
+      "projectUniqueName": "E:\\Sample\\Sample\\Sample.DataAccess\\Sample.DataAccess.csproj",
       "projectName": "Sample.DataAccess",
-      "projectPath": "F:\\Hoc\\Sample\\Sample.DataAccess\\Sample.DataAccess.csproj",
+      "projectPath": "E:\\Sample\\Sample\\Sample.DataAccess\\Sample.DataAccess.csproj",
       "packagesPath": "C:\\Users\\nguye\\.nuget\\packages\\",
-      "outputPath": "F:\\Hoc\\Sample\\Sample.DataAccess\\obj\\",
+      "outputPath": "E:\\Sample\\Sample\\Sample.DataAccess\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\nguye\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -2329,11 +2329,11 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "F:\\Hoc\\Sample\\Sample.Core\\Sample.Core.csproj": {
-              "projectPath": "F:\\Hoc\\Sample\\Sample.Core\\Sample.Core.csproj"
+            "E:\\Sample\\Sample\\Sample.Core\\Sample.Core.csproj": {
+              "projectPath": "E:\\Sample\\Sample\\Sample.Core\\Sample.Core.csproj"
             },
-            "F:\\Hoc\\Sample\\Sample.Shared\\Sample.Shared.csproj": {
-              "projectPath": "F:\\Hoc\\Sample\\Sample.Shared\\Sample.Shared.csproj"
+            "E:\\Sample\\Sample\\Sample.Shared\\Sample.Shared.csproj": {
+              "projectPath": "E:\\Sample\\Sample\\Sample.Shared\\Sample.Shared.csproj"
             }
           }
         }

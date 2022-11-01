@@ -2541,11 +2541,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "F:\\Hoc\\Sample\\Sample.API\\Sample.API.csproj",
+      "projectUniqueName": "E:\\Sample\\Sample\\Sample.API\\Sample.API.csproj",
       "projectName": "Sample.API",
-      "projectPath": "F:\\Hoc\\Sample\\Sample.API\\Sample.API.csproj",
+      "projectPath": "E:\\Sample\\Sample\\Sample.API\\Sample.API.csproj",
       "packagesPath": "C:\\Users\\nguye\\.nuget\\packages\\",
-      "outputPath": "F:\\Hoc\\Sample\\Sample.API\\obj\\",
+      "outputPath": "E:\\Sample\\Sample\\Sample.API\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\nguye\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -2562,11 +2562,11 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "F:\\Hoc\\Sample\\Sample.Application\\Sample.Application.csproj": {
-              "projectPath": "F:\\Hoc\\Sample\\Sample.Application\\Sample.Application.csproj"
+            "E:\\Sample\\Sample\\Sample.Application\\Sample.Application.csproj": {
+              "projectPath": "E:\\Sample\\Sample\\Sample.Application\\Sample.Application.csproj"
             },
-            "F:\\Hoc\\Sample\\Sample.DataAccess\\Sample.DataAccess.csproj": {
-              "projectPath": "F:\\Hoc\\Sample\\Sample.DataAccess\\Sample.DataAccess.csproj"
+            "E:\\Sample\\Sample\\Sample.DataAccess\\Sample.DataAccess.csproj": {
+              "projectPath": "E:\\Sample\\Sample\\Sample.DataAccess\\Sample.DataAccess.csproj"
             }
           }
         }

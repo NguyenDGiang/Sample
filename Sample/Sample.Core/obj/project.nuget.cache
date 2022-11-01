@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "UafpaNrMLioKGFNtrMlM4xYosFAg7zv1hB3i1xAxjr4aWmLlkC0n00u/nSc5zdSrjzPtcrJ0HI/NlagKYce0xQ==",
+  "dgSpecHash": "/Xpjwy8rSxZvYMDrhkqYYx0U9IqAZfizLN6/FFqEAcZeY0BP9gJO2DJaT/963AM94gqbr45ON6tJPpZAj6hALw==",
   "success": true,
-  "projectFilePath": "F:\\Hoc\\Sample\\Sample.Core\\Sample.Core.csproj",
+  "projectFilePath": "E:\\Sample\\Sample\\Sample.Core\\Sample.Core.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\nguye\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",
     "C:\\Users\\nguye\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\6.0.0\\microsoft.extensions.configuration.abstractions.6.0.0.nupkg.sha512",
