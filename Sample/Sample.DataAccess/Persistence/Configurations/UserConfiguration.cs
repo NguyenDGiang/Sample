@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using Sample.Core.Entities;
+using Sample.Shared.Entities;
 
 namespace Sample.DataAccess.Persistence.Configurations
 {

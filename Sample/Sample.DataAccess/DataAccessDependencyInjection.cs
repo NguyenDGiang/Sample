@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Sample.Core.Common;
+using Sample.Shared.Common;
 using Sample.DataAccess.Persistence;
 namespace Sample.DataAccess
 {

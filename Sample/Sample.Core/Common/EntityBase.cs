@@ -1,6 +1,6 @@
-﻿using Sample.Core.Common.Interfaces;
+﻿using Sample.Shared.Common.Interfaces;
 
-namespace Sample.Core.Common
+namespace Sample.Shared.Common
 {
     public abstract class EntityBase<T> : IEntityBase<T>
     {

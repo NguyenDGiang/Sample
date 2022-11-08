@@ -1,7 +1,8 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Sample.Application.Services.Users;
-using Sample.Core.Dtos;
+using Sample.Shared.Dtos;
 
 namespace Sample.API.Controllers
 {

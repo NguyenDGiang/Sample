@@ -1,9 +1,13 @@
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using Microsoft.OpenApi.Models;
 using Sample.API;
 using Sample.Application.Services.Users;
 using Sample.DataAccess;
 using Sample.DataAccess.Persistence;
 using Sample.DataAccess.Repositories;
 using Sample.DataAccess.Repositories.Users;
+using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,6 +18,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddJwt(builder.Configuration);
 builder.Services.AddSwagger();
+
 builder.Services.AddTransient(typeof(IRepository<,>), typeof(Repository<,>));
 builder.Services.AddTransient<IUserRepository, UserRepository>();
 builder.Services.AddTransient<IUserService, UserService>();
@@ -28,10 +33,14 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
-
+app.UseCors(corsPolicyBuilder =>
+            corsPolicyBuilder.AllowAnyOrigin()
+                .AllowAnyMethod()
+                .AllowAnyHeader()
+        );
 AutomatedMigration.MigrateAsync(app.Services.CreateScope().ServiceProvider);
 app.Run();

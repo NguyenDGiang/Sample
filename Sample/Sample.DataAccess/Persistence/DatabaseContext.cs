@@ -1,6 +1,7 @@
 ﻿    using Microsoft.EntityFrameworkCore;
-using Sample.Core.Common.Interfaces;
 using Sample.Core.Entities;
+using Sample.Shared.Common.Interfaces;
+using Sample.Shared.Entities;
 using System.Reflection;
 
 namespace Sample.DataAccess.Persistence
@@ -35,5 +36,7 @@ namespace Sample.DataAccess.Persistence
 
         //Dbset
         public DbSet<User> Users { get; set; }
+        public DbSet<Product> Products { get; set; }
+        public DbSet<Category> Categories { get; set; }
     }
 }

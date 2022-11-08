@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Sample.Core.Common;
-using Sample.Core.Common.Interfaces;
+using Sample.Shared.Common;
+using Sample.Shared.Common.Interfaces;
 using Sample.DataAccess.Persistence;
 using System;
 using System.Collections.Generic;

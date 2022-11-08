@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Sample.Core.Common
+namespace Sample.Shared.Common
 {
     public class DatabaseConfiguration
     {

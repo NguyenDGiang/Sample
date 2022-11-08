@@ -1,6 +1,6 @@
 ﻿using System.Runtime.Serialization;
 
-namespace Sample.Core.Exceptions
+namespace Sample.Shared.Exceptions
 {
     public class ResourceNotFoundException : Exception
     {

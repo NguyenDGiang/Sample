@@ -1,4 +1,4 @@
-﻿using Sample.Core.Entities;
+﻿using Sample.Shared.Entities;
 using Sample.DataAccess.Persistence;
 using System;
 using System.Collections.Generic;

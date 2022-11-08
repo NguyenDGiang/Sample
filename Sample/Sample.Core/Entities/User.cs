@@ -1,6 +1,6 @@
-﻿using Sample.Core.Common;
+﻿using Sample.Shared.Common;
 
-namespace Sample.Core.Entities
+namespace Sample.Shared.Entities
 {
     public class User : EntityAuditBase<Guid>
     {

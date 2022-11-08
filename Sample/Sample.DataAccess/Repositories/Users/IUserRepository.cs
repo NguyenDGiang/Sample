@@ -1,4 +1,4 @@
-﻿using Sample.Core.Entities;
+﻿using Sample.Shared.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;

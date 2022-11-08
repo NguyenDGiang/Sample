@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Sample.Core.Common.Interfaces
+namespace Sample.Shared.Common.Interfaces
 {
     public interface IEntityBase<T>
     {

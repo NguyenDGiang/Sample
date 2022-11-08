@@ -1,4 +1,4 @@
-﻿namespace Sample.Core.Common.Interfaces
+﻿namespace Sample.Shared.Common.Interfaces
 {
     public interface IEntityAuditBase<T> : IEntityBase<T>, IAuditable
     {
