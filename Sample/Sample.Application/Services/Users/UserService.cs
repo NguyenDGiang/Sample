@@ -37,6 +37,7 @@ namespace Sample.Application.Services.Users
             //    throw new BadRequestException("Username or password is incorrect");
             //}
 
+
             throw new AuthenticationException("Incorrect username or password");
         }
     }
