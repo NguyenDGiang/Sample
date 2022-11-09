@@ -22,3 +22,15 @@ E:\Sample\Sample\Sample.Core\obj\Debug\net6.0\Sample.Core.dll
 E:\Sample\Sample\Sample.Core\obj\Debug\net6.0\refint\Sample.Core.dll
 E:\Sample\Sample\Sample.Core\obj\Debug\net6.0\Sample.Core.pdb
 E:\Sample\Sample\Sample.Core\obj\Debug\net6.0\ref\Sample.Core.dll
+Z:\HOC\Sample\Sample\Sample.Core\bin\Debug\net6.0\Sample.Core.deps.json
+Z:\HOC\Sample\Sample\Sample.Core\bin\Debug\net6.0\Sample.Core.dll
+Z:\HOC\Sample\Sample\Sample.Core\bin\Debug\net6.0\Sample.Core.pdb
+Z:\HOC\Sample\Sample\Sample.Core\obj\Debug\net6.0\Sample.Core.csproj.AssemblyReference.cache
+Z:\HOC\Sample\Sample\Sample.Core\obj\Debug\net6.0\Sample.Core.GeneratedMSBuildEditorConfig.editorconfig
+Z:\HOC\Sample\Sample\Sample.Core\obj\Debug\net6.0\Sample.Core.AssemblyInfoInputs.cache
+Z:\HOC\Sample\Sample\Sample.Core\obj\Debug\net6.0\Sample.Core.AssemblyInfo.cs
+Z:\HOC\Sample\Sample\Sample.Core\obj\Debug\net6.0\Sample.Core.csproj.CoreCompileInputs.cache
+Z:\HOC\Sample\Sample\Sample.Core\obj\Debug\net6.0\Sample.Core.dll
+Z:\HOC\Sample\Sample\Sample.Core\obj\Debug\net6.0\refint\Sample.Core.dll
+Z:\HOC\Sample\Sample\Sample.Core\obj\Debug\net6.0\Sample.Core.pdb
+Z:\HOC\Sample\Sample\Sample.Core\obj\Debug\net6.0\ref\Sample.Core.dll

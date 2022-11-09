@@ -22,3 +22,15 @@ E:\Sample\Sample\Sample.Shared\obj\Debug\net6.0\Sample.Shared.dll
 E:\Sample\Sample\Sample.Shared\obj\Debug\net6.0\refint\Sample.Shared.dll
 E:\Sample\Sample\Sample.Shared\obj\Debug\net6.0\Sample.Shared.pdb
 E:\Sample\Sample\Sample.Shared\obj\Debug\net6.0\ref\Sample.Shared.dll
+Z:\HOC\Sample\Sample\Sample.Shared\bin\Debug\net6.0\Sample.Shared.deps.json
+Z:\HOC\Sample\Sample\Sample.Shared\bin\Debug\net6.0\Sample.Shared.dll
+Z:\HOC\Sample\Sample\Sample.Shared\bin\Debug\net6.0\Sample.Shared.pdb
+Z:\HOC\Sample\Sample\Sample.Shared\obj\Debug\net6.0\Sample.Shared.csproj.AssemblyReference.cache
+Z:\HOC\Sample\Sample\Sample.Shared\obj\Debug\net6.0\Sample.Shared.GeneratedMSBuildEditorConfig.editorconfig
+Z:\HOC\Sample\Sample\Sample.Shared\obj\Debug\net6.0\Sample.Shared.AssemblyInfoInputs.cache
+Z:\HOC\Sample\Sample\Sample.Shared\obj\Debug\net6.0\Sample.Shared.AssemblyInfo.cs
+Z:\HOC\Sample\Sample\Sample.Shared\obj\Debug\net6.0\Sample.Shared.csproj.CoreCompileInputs.cache
+Z:\HOC\Sample\Sample\Sample.Shared\obj\Debug\net6.0\Sample.Shared.dll
+Z:\HOC\Sample\Sample\Sample.Shared\obj\Debug\net6.0\refint\Sample.Shared.dll
+Z:\HOC\Sample\Sample\Sample.Shared\obj\Debug\net6.0\Sample.Shared.pdb
+Z:\HOC\Sample\Sample\Sample.Shared\obj\Debug\net6.0\ref\Sample.Shared.dll
