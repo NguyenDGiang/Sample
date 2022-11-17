@@ -3,6 +3,11 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Sample.Shared.Common;
 using Sample.DataAccess.Persistence;
+using Sample.DataAccess.Repositories;
+using Sample.DataAccess.Repositories.Users;
+using Sample.DataAccess.Repositories.Products;
+using Sample.DataAccess.Repositories.UploadFiles;
+
 namespace Sample.DataAccess
 {
     public static class DataAccessDependencyInjection
@@ -10,7 +15,10 @@ namespace Sample.DataAccess
         public static IServiceCollection AddDataAccess(this IServiceCollection services, IConfiguration configuration)
         {
             services.AddDatabase(configuration);
-
+            services.AddTransient(typeof(IRepository<,>), typeof(Repository<,>));
+            services.AddTransient<IUserRepository, UserRepository>();
+            services.AddTransient<IProductRepository, ProductRepository>();
+            services.AddTransient<IUploadFileRepository, UploadFileRepository>();
             return services;
         }
 

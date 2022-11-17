@@ -20,4 +20,8 @@
     <ProjectReference Include="..\Sample.DataAccess\Sample.DataAccess.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwRoot\Uploads\" />
+  </ItemGroup>
+
 </Project>

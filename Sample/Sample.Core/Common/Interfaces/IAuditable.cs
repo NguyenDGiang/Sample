@@ -8,6 +8,6 @@ namespace Sample.Shared.Common.Interfaces
 {
     public interface IAuditable:IDateTracking
     {
-        public bool IsDelete { get; set; }
+        public bool? IsDelete { get; set; }
     }
 }

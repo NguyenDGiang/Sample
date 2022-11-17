@@ -34,3 +34,6 @@ Z:\HOC\Sample\Sample\Sample.Shared\obj\Debug\net6.0\Sample.Shared.dll
 Z:\HOC\Sample\Sample\Sample.Shared\obj\Debug\net6.0\refint\Sample.Shared.dll
 Z:\HOC\Sample\Sample\Sample.Shared\obj\Debug\net6.0\Sample.Shared.pdb
 Z:\HOC\Sample\Sample\Sample.Shared\obj\Debug\net6.0\ref\Sample.Shared.dll
+E:\Sample\Sample\Sample.Shared\bin\Debug\net6.0\Sample.Core.dll
+E:\Sample\Sample\Sample.Shared\bin\Debug\net6.0\Sample.Core.pdb
+E:\Sample\Sample\Sample.Shared\obj\Debug\net6.0\Sample.Shared.csproj.CopyComplete

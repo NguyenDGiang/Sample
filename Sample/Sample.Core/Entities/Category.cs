@@ -9,7 +9,6 @@ namespace Sample.Core.Entities
 {
     public class Category: EntityAuditBase<Guid>
     {
-        public int Id { get; set; }
         public string Name { get; set; }
     }
 }

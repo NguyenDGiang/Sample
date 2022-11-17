@@ -211,3 +211,6 @@ Z:\HOC\Sample\Sample\Sample.API\obj\Debug\net6.0\refint\Sample.API.dll
 Z:\HOC\Sample\Sample\Sample.API\obj\Debug\net6.0\Sample.API.pdb
 Z:\HOC\Sample\Sample\Sample.API\obj\Debug\net6.0\Sample.API.genruntimeconfig.cache
 Z:\HOC\Sample\Sample\Sample.API\obj\Debug\net6.0\ref\Sample.API.dll
+E:\Sample\Sample\Sample.API\bin\Debug\net6.0\AutoMapper.dll
+E:\Sample\Sample\Sample.API\bin\Debug\net6.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+E:\Sample\Sample\Sample.API\bin\Debug\net6.0\Sample.API.staticwebassets.runtime.json

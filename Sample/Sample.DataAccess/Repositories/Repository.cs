@@ -62,6 +62,7 @@ namespace Sample.DataAccess.Repositories
         public void Add(T entity)
         {
             _appContext.Add(entity);
+            _appContext.SaveChanges();
         }
 
         public T Update(T entity)

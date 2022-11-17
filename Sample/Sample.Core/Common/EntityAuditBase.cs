@@ -6,6 +6,6 @@ namespace Sample.Shared.Common
     {
         public DateTimeOffset CreatedDate { get; set; }
         public DateTimeOffset? LastModifiedDate { get; set; }
-        public bool IsDelete { get; set; }
+        public bool? IsDelete { get; set; }
     }
 }

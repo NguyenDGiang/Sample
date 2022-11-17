@@ -1,11 +1,37 @@
 {
   "Version": 1,
-  "Hash": "SNh0bV1s4s3bedIVo7ZsvD1Y55wvW/O4MiZvp8Xgds4=",
+  "Hash": "/GPZntwJZ2/orm1XjfPHeYC8QaI7XZZXQLWKBkYLXoo=",
   "Source": "Sample.API",
   "BasePath": "_content/Sample.API",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [],
-  "DiscoveryPatterns": [],
-  "Assets": []
+  "DiscoveryPatterns": [
+    {
+      "Name": "Sample.API\\wwwroot",
+      "Source": "Sample.API",
+      "ContentRoot": "E:\\Sample\\Sample\\Sample.API\\wwwroot\\",
+      "BasePath": "_content/Sample.API",
+      "Pattern": "**"
+    }
+  ],
+  "Assets": [
+    {
+      "Identity": "E:\\Sample\\Sample\\Sample.API\\wwwroot\\Uploadsfile",
+      "SourceId": "Sample.API",
+      "SourceType": "Discovered",
+      "ContentRoot": "E:\\Sample\\Sample\\Sample.API\\wwwroot\\",
+      "BasePath": "_content/Sample.API",
+      "RelativePath": "Uploadsfile",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Uploadsfile"
+    }
+  ]
 }

@@ -566,7 +566,8 @@
       },
       "Sample.Shared/1.0.0": {
         "dependencies": {
-          "Microsoft.AspNetCore.Cryptography.KeyDerivation": "6.0.0"
+          "Microsoft.AspNetCore.Cryptography.KeyDerivation": "6.0.0",
+          "Sample.Core": "1.0.0"
         },
         "runtime": {
           "Sample.Shared.dll": {}

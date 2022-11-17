@@ -1,24 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "Z:\\HOC\\Sample\\Sample\\Sample.Shared\\Sample.Shared.csproj": {}
+    "E:\\Sample\\Sample\\Sample.Shared\\Sample.Shared.csproj": {}
   },
   "projects": {
-    "Z:\\HOC\\Sample\\Sample\\Sample.Shared\\Sample.Shared.csproj": {
+    "E:\\Sample\\Sample\\Sample.Core\\Sample.Core.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "Z:\\HOC\\Sample\\Sample\\Sample.Shared\\Sample.Shared.csproj",
-        "projectName": "Sample.Shared",
-        "projectPath": "Z:\\HOC\\Sample\\Sample\\Sample.Shared\\Sample.Shared.csproj",
-        "packagesPath": "C:\\Users\\giang.nguyen5\\.nuget\\packages\\",
-        "outputPath": "Z:\\HOC\\Sample\\Sample\\Sample.Shared\\obj\\",
+        "projectUniqueName": "E:\\Sample\\Sample\\Sample.Core\\Sample.Core.csproj",
+        "projectName": "Sample.Core",
+        "projectPath": "E:\\Sample\\Sample\\Sample.Core\\Sample.Core.csproj",
+        "packagesPath": "C:\\Users\\nguye\\.nuget\\packages\\",
+        "outputPath": "E:\\Sample\\Sample\\Sample.Core\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\giang.nguyen5\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\nguye\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -44,6 +40,74 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
+            "Microsoft.Extensions.Configuration.Binder": {
+              "target": "Package",
+              "version": "[6.0.0, )"
+            },
+            "System.IdentityModel.Tokens.Jwt": {
+              "target": "Package",
+              "version": "[6.25.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.300\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "E:\\Sample\\Sample\\Sample.Shared\\Sample.Shared.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "E:\\Sample\\Sample\\Sample.Shared\\Sample.Shared.csproj",
+        "projectName": "Sample.Shared",
+        "projectPath": "E:\\Sample\\Sample\\Sample.Shared\\Sample.Shared.csproj",
+        "packagesPath": "C:\\Users\\nguye\\.nuget\\packages\\",
+        "outputPath": "E:\\Sample\\Sample\\Sample.Shared\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\nguye\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "E:\\Sample\\Sample\\Sample.Core\\Sample.Core.csproj": {
+                "projectPath": "E:\\Sample\\Sample\\Sample.Core\\Sample.Core.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
             "Microsoft.AspNetCore.Cryptography.KeyDerivation": {
               "target": "Package",
               "version": "[6.0.0, )"
@@ -55,8 +119,7 @@
             "net47",
             "net471",
             "net472",
-            "net48",
-            "net481"
+            "net48"
           ],
           "assetTargetFallback": true,
           "warn": true,
@@ -65,7 +128,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.401\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.300\\RuntimeIdentifierGraph.json"
         }
       }
     }
