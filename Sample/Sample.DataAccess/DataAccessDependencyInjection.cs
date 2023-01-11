@@ -7,6 +7,7 @@ using Sample.DataAccess.Repositories;
 using Sample.DataAccess.Repositories.Users;
 using Sample.DataAccess.Repositories.Products;
 using Sample.DataAccess.Repositories.UploadFiles;
+using Sample.DataAccess.Repositories.Categories;
 
 namespace Sample.DataAccess
 {
@@ -19,6 +20,7 @@ namespace Sample.DataAccess
             services.AddTransient<IUserRepository, UserRepository>();
             services.AddTransient<IProductRepository, ProductRepository>();
             services.AddTransient<IUploadFileRepository, UploadFileRepository>();
+            services.AddTransient<ICategoryRepository, CategoryRepository>();
             return services;
         }
 

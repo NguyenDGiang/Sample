@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Microsoft.Extensions.DependencyInjection;
 using Sample.Application.MappingProfiles;
+using Sample.Application.Services.Categories;
 using Sample.Application.Services.Products;
 using Sample.Application.Services.UploadFiles;
 using Sample.Application.Services.Users;
@@ -27,6 +28,7 @@ namespace Sample.Application
             services.AddTransient<IUserService, UserService>();
             services.AddTransient<IProductService, ProductService>();
             services.AddTransient<IUploadFileService, UploadFileService>();
+            services.AddTransient<ICategoryService, CategoryService>();
             return services;
         }
     }

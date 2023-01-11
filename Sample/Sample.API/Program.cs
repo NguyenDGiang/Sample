@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using Sample.API;
+using Sample.API.Middleware;
 using Sample.Application;
 using Sample.Application.Services.Users;
 using Sample.DataAccess;
@@ -35,10 +36,12 @@ app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
+app.UseMiddleware<ExceptionHandlingMiddleware>();
 app.UseCors(corsPolicyBuilder =>
             corsPolicyBuilder.AllowAnyOrigin()
                 .AllowAnyMethod()
                 .AllowAnyHeader()
         );
+
 AutomatedMigration.MigrateAsync(app.Services.CreateScope().ServiceProvider);
 app.Run();

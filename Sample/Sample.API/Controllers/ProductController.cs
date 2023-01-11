@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Sample.Application.Exceptions;
 using Sample.Application.Services.Products;
 using Sample.Shared.Dtos.Products;
 

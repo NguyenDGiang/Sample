@@ -4,6 +4,7 @@ using Sample.Shared.Helpers;
 using Sample.DataAccess.Repositories.Users;
 using Sample.Shared.Security;
 using System.Security.Authentication;
+using Sample.Application.Exceptions;
 
 namespace Sample.Application.Services.Users
 {
@@ -22,7 +23,7 @@ namespace Sample.Application.Services.Users
             
             if(user == null)
             {
-                throw new Exception("User không tồn tại");
+                throw new BadRequestException("User không tồn tại");
             }
             if (Cryptography.VerifyPassword(login.Password, user.StoreSalt, user.Password))
             {

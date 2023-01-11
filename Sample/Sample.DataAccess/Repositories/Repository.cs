@@ -8,6 +8,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore.Storage;
 
 namespace Sample.DataAccess.Repositories
 {
@@ -19,7 +20,14 @@ namespace Sample.DataAccess.Repositories
         {
             _appContext = appContext;
         }
+        public Task<IDbContextTransaction> BeginTransactionAsync() => _appContext.Database.BeginTransactionAsync();
 
+        public async Task EndTransactionAsync()
+        {
+            await _appContext.Database.CommitTransactionAsync();
+        }
+
+        public Task RollbackTransactionAsync() => _appContext.Database.RollbackTransactionAsync();
         public T FindById(K id, params Expression<Func<T, object>>[] includeProperties)
         {
             return FindAll(includeProperties).SingleOrDefault(x => x.Id.Equals(id));
@@ -61,8 +69,15 @@ namespace Sample.DataAccess.Repositories
 
         public void Add(T entity)
         {
-            _appContext.Add(entity);
-            _appContext.SaveChanges();
+            try
+            {
+                _appContext.Add(entity);
+                _appContext.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
         public T Update(T entity)
@@ -96,11 +111,13 @@ namespace Sample.DataAccess.Repositories
         public void Remove(T entity)
         {
             _appContext.Set<T>().Remove(entity);
+            _appContext.SaveChanges();
         }
 
         public void Remove(K id)
         {
             Remove(FindById(id));
+            _appContext.SaveChanges();
         }
 
         public void RemoveMultiple(List<T> entities)

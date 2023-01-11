@@ -1,6 +1,8 @@
 ﻿using AutoMapper;
 using Sample.Core.Entities;
+using Sample.Shared.Dtos.Categories;
 using Sample.Shared.Dtos.Products;
+using Sample.Shared.Dtos.UploadFiles;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,6 +20,10 @@ namespace Sample.Application.MappingProfiles
                 .ForMember(dest => dest.Price, otp => otp.MapFrom(src => src.Price))
                 .ForMember(dest => dest.SKU, otp => otp.MapFrom(src => src.SKU))
                 .ForMember(dest => dest.Image, otp => otp.MapFrom(src => src.Image));
+            CreateMap<UploadFile, InsertUploadFileRequest>();
+            CreateMap<Category, CategoryReponse>();
+            CreateMap<CreateCategoryDto, Category>();
+            CreateMap<UpdateCategoryDto, Category>();
         }
     }
 }

@@ -1,9 +1,13 @@
-﻿using System.Linq.Expressions;
+﻿using Microsoft.EntityFrameworkCore.Storage;
+using System.Linq.Expressions;
 
 namespace Sample.DataAccess.Repositories
 {
     public interface IRepository<T, K> where T : class
     {
+        Task EndTransactionAsync();
+        Task RollbackTransactionAsync();
+        Task<IDbContextTransaction> BeginTransactionAsync();
         T FindById(K id, params Expression<Func<T, object>>[] includeProperties);
 
         T FindSingle(Expression<Func<T, bool>> predicate, params Expression<Func<T, object>>[] includeProperties);
