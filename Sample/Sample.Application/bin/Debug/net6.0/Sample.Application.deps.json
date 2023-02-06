@@ -647,6 +647,7 @@
       "Sample.DataAccess/1.0.0": {
         "dependencies": {
           "Microsoft.EntityFrameworkCore.InMemory": "6.0.0",
+          "Microsoft.EntityFrameworkCore.Relational": "6.0.0",
           "Microsoft.EntityFrameworkCore.SqlServer": "6.0.0",
           "Sample.Core": "1.0.0",
           "Sample.Shared": "1.0.0"
@@ -658,6 +659,7 @@
       "Sample.Shared/1.0.0": {
         "dependencies": {
           "Microsoft.AspNetCore.Cryptography.KeyDerivation": "6.0.0",
+          "Microsoft.AspNetCore.Http.Features": "6.0.0-preview.4.21253.5",
           "Sample.Core": "1.0.0"
         },
         "runtime": {

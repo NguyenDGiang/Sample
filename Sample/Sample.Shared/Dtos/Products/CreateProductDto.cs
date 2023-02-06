@@ -10,8 +10,5 @@ namespace Sample.Shared.Dtos.Products
     {
         [Validation("Nhập Tên vào!!!")]
         public string Name { get; set; }
-        public string SKU { get; set; }
-        public double Price { get; set; }
-        public string Image { get; set; }
     }
 }

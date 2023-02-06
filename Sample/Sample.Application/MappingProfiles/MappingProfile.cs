@@ -1,7 +1,10 @@
 ﻿using AutoMapper;
 using Sample.Core.Entities;
+using Sample.Shared.Dtos.AttributeProducts;
+using Sample.Shared.Dtos.Attributes;
 using Sample.Shared.Dtos.Categories;
 using Sample.Shared.Dtos.Products;
+using Sample.Shared.Dtos.ProductVariants;
 using Sample.Shared.Dtos.UploadFiles;
 using System;
 using System.Collections.Generic;
@@ -15,15 +18,24 @@ namespace Sample.Application.MappingProfiles
     {
         public MappingProfile()
         {
-            CreateMap<CreateProductDto, Product>()
-                .ForMember(dest=>dest.Name,otp=> otp.MapFrom(src=>src.Name))
-                .ForMember(dest => dest.Price, otp => otp.MapFrom(src => src.Price))
-                .ForMember(dest => dest.SKU, otp => otp.MapFrom(src => src.SKU))
-                .ForMember(dest => dest.Image, otp => otp.MapFrom(src => src.Image));
+            CreateMap<CreateProductDto, Product>();
             CreateMap<UploadFile, InsertUploadFileRequest>();
-            CreateMap<Category, CategoryReponse>();
+            CreateMap<Category, CategoryDto>();
+            CreateMap<Product, ProductReponse>();
+            CreateMap<Product, ProductDto>();
+            CreateMap<ProductVariant, ProductVariantDto>();
+            CreateMap<AttributeProduct, AttributeProductDto>();
+            CreateMap<Sample.Core.Entities.Attribute, AttributeDto>();
             CreateMap<CreateCategoryDto, Category>();
             CreateMap<UpdateCategoryDto, Category>();
+            CreateMap<CreateAttributeDto, Sample.Core.Entities.Attribute>();
+            CreateMap<CreateAttributeProductDto, AttributeProduct>();
+            CreateMap<CreateProductMappingAttributeDto, ProductVariant>();
+            CreateMap<UpdateProductDto, Product>();
+            CreateMap<Product, ProductDto>()
+                  .ForMember(dest => dest.Attributes, opt => opt.MapFrom(src => src.Attribute))
+                  .ForMember(dest => dest.ProductVariants, opt => opt.MapFrom(src => src.ProductVariant))
+                  .ForMember(dest => dest.CategoryDto, opt => opt.MapFrom(src => src.Category));
         }
     }
 }

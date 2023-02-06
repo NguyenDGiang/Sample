@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 
 namespace Sample.Shared.Dtos.Categories
 {
-    public class CategoryReponse : EntityAuditBase<int>
+    public class CategoryDto : EntityAuditBase<int>
     {
         public string Name { get; set; }
-        public int ParentId { get; set; }
-        public List<CategoryReponse>? CategoryChildren { get; set; }
+        public int? ParentId { get; set; }
+        public List<CategoryDto>? CategoryChildren { get; set; }
     }
 }

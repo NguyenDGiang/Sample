@@ -67,7 +67,7 @@ namespace Sample.DataAccess.Repositories
             return items.Where(predicate);
         }
 
-        public void Add(T entity)
+        public async void Add(T entity)
         {
             try
             {
@@ -105,6 +105,7 @@ namespace Sample.DataAccess.Repositories
             }
 
             var result = _appContext.Set<T>().Update(dbEntity);
+            _appContext.SaveChanges();  
             return result.Entity;
         }
 

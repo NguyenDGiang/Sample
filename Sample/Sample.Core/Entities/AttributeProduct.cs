@@ -12,7 +12,9 @@ namespace Sample.Core.Entities
     public class AttributeProduct : EntityAuditBase<int>
     {
         public string value { get; set; }
-        public Attribute Attribute { get; set; }
-        public Product Product { get; set; }    
+        public ICollection<ProductVariant>? ProductVariant { get; set; }
+        [ForeignKey("Attribute")]
+        public int AttributeId { get; set; }
+        public Attribute? Attribute { get; set; }
     }
 }

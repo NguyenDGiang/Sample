@@ -20,5 +20,10 @@ namespace Sample.API.Controllers
         {
             return Ok(_userService.LoginAsync(login));
         }
+        [HttpPost("Refresh")]
+        public IActionResult Post(TokenRequest tokenRequest)
+        {
+            return Ok(_userService.VerifyToken(tokenRequest));
+        }
     }
 }

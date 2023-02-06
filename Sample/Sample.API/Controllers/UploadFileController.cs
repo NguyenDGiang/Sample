@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Sample.Application.Services.UploadFiles;
+using Sample.Shared.Dtos.Products;
 
 namespace Sample.API.Controllers
 {
@@ -16,9 +17,9 @@ namespace Sample.API.Controllers
         }
 
         [HttpPost()]
-        public IActionResult Post(IFormFile file)
+        public IActionResult Post([FromForm]UploadFileProductDto uploadFileProductDto)
         {
-            return Ok(_uploadFileService.Insert(file));
+            return Ok(_uploadFileService.Insert(uploadFileProductDto));
         }
     }
 }

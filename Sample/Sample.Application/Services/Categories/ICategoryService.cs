@@ -11,7 +11,9 @@ namespace Sample.Application.Services.Categories
 {
     public interface ICategoryService
     {
-        List<CategoryReponse> GetAll();
+        public CategoryDto GetCategoriesReCursive(Category category);
+        List<CategoryDto> GetAll();
+        PagingList<CategoryDto> GetPaging(PagingParamesters paingParamesters);
         ApiResult<UpdateCategoryDto> Create(UpdateCategoryDto categoryDto);
         ApiResult<UpdateCategoryDto> Update(UpdateCategoryDto categoryDto);
         ApiResult<Category> Delete(int Id);

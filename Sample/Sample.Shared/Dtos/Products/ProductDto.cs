@@ -6,11 +6,8 @@ using System.Threading.Tasks;
 
 namespace Sample.Shared.Dtos.Products
 {
-    public class ProductDto
+    public interface IProductDto
     {
         public string Name { get; set; }
-        public string SKU { get; set; }
-        public decimal Price { get; set; }
-        public string Image { get; set; }
     }
 }

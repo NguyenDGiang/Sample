@@ -12,6 +12,8 @@ namespace Sample.Core.Entities
     {
         public string Name { get; set; }
         public Category? Category { get; set; }  
+        public ICollection<Attribute> Attribute  { get; set; }  
+        public ICollection<ProductVariant> ProductVariant { get; set; }
         
     }
 }

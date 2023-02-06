@@ -5,19 +5,29 @@ using Sample.DataAccess.Repositories.Users;
 using Sample.Shared.Security;
 using System.Security.Authentication;
 using Sample.Application.Exceptions;
+using Sample.Core.Entities;
+using Sample.DataAccess.Repositories.RefreshTokens;
+using Sample.Shared.SeedWorks;
+using System.IdentityModel.Tokens.Jwt;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 
 namespace Sample.Application.Services.Users
 {
     public class UserService : IUserService
     {
         private readonly IUserRepository _userRepository;
+        private readonly IRefreshTokenRepository _refreshTokenRepository;
         private readonly IConfiguration _configuration;
-        public UserService(IUserRepository userRepository, IConfiguration configuration)
+        public UserService(IUserRepository userRepository, 
+            IConfiguration configuration,
+            IRefreshTokenRepository refreshTokenRepository)
         {
             _userRepository = userRepository;
-            _configuration = configuration; 
+            _configuration = configuration;
+            _refreshTokenRepository = refreshTokenRepository;
         }
-        public async Task<ReponseLoginDto> LoginAsync(LoginDto login)
+        public async Task<ApiResult> LoginAsync(LoginDto login)
         {
             var user = _userRepository.FindSingle(x => x.UserName.Equals(login.UserName));
             
@@ -27,18 +37,165 @@ namespace Sample.Application.Services.Users
             }
             if (Cryptography.VerifyPassword(login.Password, user.StoreSalt, user.Password))
             {
-                ReponseLoginDto reponseLoginDto = new ReponseLoginDto();
-                reponseLoginDto.Token = JwtHelper.GenerateToken(user, _configuration);
-                return reponseLoginDto;
+                var Token = JwtHelper.GenerateToken(user, _configuration);
+                var refreshToken = new RefreshToken()
+                {
+                    JwtId = Token,
+                    IsUsed = false,
+                    UserId = user.Id,
+                    AddedDate = DateTime.UtcNow,
+                    ExpiryDate = DateTime.UtcNow.AddYears(1),
+                    IsRevoked = false,
+                    Token = RandomString(25) + Guid.NewGuid()
+                };
+                _refreshTokenRepository.Add(refreshToken);
+                return new ApiResult() {IsSuccess = true, RefreshToken = refreshToken.Token, Token =  Token};
             }
+
             //var signInResult = await _signInManager.PasswordSignInAsync(user, loginUserModel.Password, false, false);
 
             //if (!signInResult.Succeeded)
             //{
             //    throw new BadRequestException("Username or password is incorrect");
             //}
+            
 
             throw new AuthenticationException("Incorrect username or password");
+        }
+        public string RandomString(int length)
+        {
+            var random = new Random();
+            var chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+            return new string(Enumerable.Repeat(chars, length)
+            .Select(s => s[random.Next(s.Length)]).ToArray());
+        }
+        public async Task<ApiResult> VerifyToken(TokenRequest tokenRequest)
+        {
+            var jwtTokenHandler = new JwtSecurityTokenHandler();
+
+            try
+            {
+                // This validation function will make sure that the token meets the validation parameters
+                // and its an actual jwt token not just a random string
+                var key = Encoding.ASCII.GetBytes("401b09eab3c013d4ca54922bb802bec8fd5318192b0a75f201d8b3727429090fb337591abd3e44453b954555b7a0812e1081c39b740293f765eae731f5a65ed1");
+
+                var principal = jwtTokenHandler.ValidateToken(tokenRequest.Token, new TokenValidationParameters
+                {
+                    ValidateIssuerSigningKey = true,
+                    IssuerSigningKey = new SymmetricSecurityKey(key),
+                    ValidateIssuer = true,
+                    ValidateAudience = true,
+                    // set clockskew to zero so tokens expire exactly at token expiration time (instead of 5 minutes later)
+                    ClockSkew = TimeSpan.Zero
+                }, out var validatedToken);
+
+                // Now we need to check if the token has a valid security algorithm
+                if (validatedToken is JwtSecurityToken jwtSecurityToken)
+                {
+                    var result = jwtSecurityToken.Header.Alg.Equals(SecurityAlgorithms.HmacSha256, StringComparison.InvariantCultureIgnoreCase);
+
+                    if (result == false)
+                    {
+                        return null;
+                    }
+                }
+
+                // Will get the time stamp in unix time
+                var utcExpiryDate = long.Parse(principal.Claims.FirstOrDefault(x => x.Type == JwtRegisteredClaimNames.Exp).Value);
+
+                // we convert the expiry date from seconds to the date
+                var expDate = UnixTimeStampToDateTime(utcExpiryDate);
+
+                if (expDate > DateTime.UtcNow)
+                {
+                    return new ApiResult(false, "We cannot refresh this since the token has not expired", 400);
+                }
+
+                // Check the token we got if its saved in the db
+                var storedRefreshToken = _refreshTokenRepository.FindAll().FirstOrDefault(x => x.Token == tokenRequest.RefreshToken);
+
+                if (storedRefreshToken == null)
+                {
+                    return new ApiResult()
+                    {
+                       Message  =  "refresh token doesnt exist" ,
+                       IsSuccess = false
+                    };
+                }
+
+                // Check the date of the saved token if it has expired
+                if (DateTime.UtcNow > storedRefreshToken.ExpiryDate)
+                {
+                    return new ApiResult()
+                    {
+                        Message = "token has expired, user needs to relogin",
+                        IsSuccess = false
+                    };
+                }
+
+                // check if the refresh token has been used
+                if (storedRefreshToken.IsUsed)
+                {
+                    return new ApiResult()
+                    {
+                        Message = "token has been used",
+                        IsSuccess = false
+                    };
+                }
+
+                // Check if the token is revoked
+                if (storedRefreshToken.IsRevoked)
+                {
+                    return new ApiResult()
+                    {
+                        Message = "token has been revoked",
+                        IsSuccess = false
+                    };
+                }
+
+                // we are getting here the jwt token id
+                var jti = principal.Claims.SingleOrDefault(x => x.Type == JwtRegisteredClaimNames.Jti).Value;
+
+                // check the id that the recieved token has against the id saved in the db
+                if (storedRefreshToken.JwtId != jti)
+                {
+                    return new ApiResult()
+                    {
+                        Message = "the token doenst mateched the saved token",
+                        IsSuccess = false
+                    };
+                }
+
+                storedRefreshToken.IsUsed = true;
+                _refreshTokenRepository.Update(storedRefreshToken);
+
+                var dbUser = _userRepository.FindById(storedRefreshToken.UserId);
+                var Token = JwtHelper.GenerateToken(dbUser, _configuration);
+                var refreshToken = new RefreshToken()
+                {
+                    JwtId = Token,
+                    IsUsed = false,
+                    UserId = dbUser.Id,
+                    AddedDate = DateTime.UtcNow,
+                    ExpiryDate = DateTime.UtcNow.AddYears(1),
+                    IsRevoked = false,
+                    Token = RandomString(25) + Guid.NewGuid()
+                };
+                _refreshTokenRepository.Add(refreshToken);
+                return new ApiResult() { IsSuccess = true, RefreshToken = refreshToken.Token, Token = Token };
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+
+        private DateTime UnixTimeStampToDateTime(double unixTimeStamp)
+        {
+            // Unix timestamp is seconds past epoch
+            System.DateTime dtDateTime = new DateTime(1970, 1, 1, 0, 0, 0, 0, System.DateTimeKind.Utc);
+            dtDateTime = dtDateTime.AddSeconds(unixTimeStamp).ToUniversalTime();
+            return dtDateTime;
         }
     }
 }

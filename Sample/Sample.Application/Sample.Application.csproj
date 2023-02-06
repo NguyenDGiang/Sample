@@ -17,4 +17,8 @@
     <ProjectReference Include="..\Sample.DataAccess\Sample.DataAccess.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Services\NewFolder\" />
+  </ItemGroup>
+
 </Project>

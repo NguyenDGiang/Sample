@@ -1,4 +1,5 @@
 ﻿using Sample.Core.Entities;
+using Sample.Shared.Dtos.AttributeProducts;
 using Sample.Shared.Dtos.Products;
 using Sample.Shared.SeedWorks;
 using System;
@@ -11,11 +12,13 @@ namespace Sample.Application.Services.Products
 {
     public interface IProductService
     {
-        List<ProductReponse> GetAll();
-        List<ProductReponse> Get(Guid id);
-        List<ProductReponse> GetPaging();
-        ApiResult<ProductReponse>  Create(CreateProductDto product);
-        ApiResult<ProductReponse> Update(CreateProductDto product);
-        ApiResult<ProductReponse> Update(Guid id);
+        List<ProductDto> GetAll();
+        ProductDto Get(Guid id);
+        PagingList<ProductDto> GetPaging(PagingParamesters pagingParamesters);
+        ApiResult<CreateProductDto>  Create(CreateProductDto product);
+        ApiResult<CreateProductMappingAttributeDto> CreateMappingAttribute(CreateProductMappingAttributeDto createProductMappingAttributeDto);
+        ApiResult<UpdateProductDto> Update(UpdateProductDto product);
+        ApiResult<ProductDto> Update(Guid id);
+        ApiResult Delete(Guid id);
     }
 }

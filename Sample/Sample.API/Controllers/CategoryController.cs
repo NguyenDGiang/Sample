@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Sample.Application.Services.Categories;
 using Sample.Shared.Dtos.Categories;
+using Sample.Shared.SeedWorks;
 
 namespace Sample.API.Controllers
 {
@@ -28,6 +29,11 @@ namespace Sample.API.Controllers
         public IActionResult Delete(int Id)
         {
             return Ok(_categoryService.Delete(Id));
+        }
+        [HttpGet("GetPaging")]
+        public IActionResult Get([FromQuery]PagingParamesters paging)
+        {
+            return Ok(_categoryService.GetPaging(paging));
         }
     }
 }
