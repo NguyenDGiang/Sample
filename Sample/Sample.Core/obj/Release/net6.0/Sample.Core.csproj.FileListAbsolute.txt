@@ -1,0 +1,12 @@
+E:\Sample\Sample\Sample.Core\bin\Release\net6.0\Sample.Core.deps.json
+E:\Sample\Sample\Sample.Core\bin\Release\net6.0\Sample.Core.dll
+E:\Sample\Sample\Sample.Core\bin\Release\net6.0\Sample.Core.pdb
+E:\Sample\Sample\Sample.Core\obj\Release\net6.0\Sample.Core.csproj.AssemblyReference.cache
+E:\Sample\Sample\Sample.Core\obj\Release\net6.0\Sample.Core.GeneratedMSBuildEditorConfig.editorconfig
+E:\Sample\Sample\Sample.Core\obj\Release\net6.0\Sample.Core.AssemblyInfoInputs.cache
+E:\Sample\Sample\Sample.Core\obj\Release\net6.0\Sample.Core.AssemblyInfo.cs
+E:\Sample\Sample\Sample.Core\obj\Release\net6.0\Sample.Core.csproj.CoreCompileInputs.cache
+E:\Sample\Sample\Sample.Core\obj\Release\net6.0\Sample.Core.dll
+E:\Sample\Sample\Sample.Core\obj\Release\net6.0\refint\Sample.Core.dll
+E:\Sample\Sample\Sample.Core\obj\Release\net6.0\Sample.Core.pdb
+E:\Sample\Sample\Sample.Core\obj\Release\net6.0\ref\Sample.Core.dll

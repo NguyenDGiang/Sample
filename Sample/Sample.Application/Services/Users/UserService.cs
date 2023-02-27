@@ -78,19 +78,20 @@ namespace Sample.Application.Services.Users
                 // This validation function will make sure that the token meets the validation parameters
                 // and its an actual jwt token not just a random string
                 var key = Encoding.ASCII.GetBytes("401b09eab3c013d4ca54922bb802bec8fd5318192b0a75f201d8b3727429090fb337591abd3e44453b954555b7a0812e1081c39b740293f765eae731f5a65ed1");
-
-                var principal = jwtTokenHandler.ValidateToken(tokenRequest.Token, new TokenValidationParameters
+                var tokenValidationParameters = new TokenValidationParameters
                 {
+                    ValidateAudience = false, //you might want to validate the audience and issuer depending on your use case
+                    ValidateIssuer = false,
                     ValidateIssuerSigningKey = true,
-                    IssuerSigningKey = new SymmetricSecurityKey(key),
-                    ValidateIssuer = true,
-                    ValidateAudience = true,
-                    // set clockskew to zero so tokens expire exactly at token expiration time (instead of 5 minutes later)
-                    ClockSkew = TimeSpan.Zero
-                }, out var validatedToken);
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:Key"])),
+                    ValidateLifetime = false, //here we are saying that we don't care about the token's expiration date
+                    ValidIssuer = _configuration["Jwt:Issuer"],
+                    ValidAudience = _configuration["Jwt:Audience"]
+                };
 
+                var principal = jwtTokenHandler.ValidateToken(tokenRequest.Token, tokenValidationParameters, out var securityToken);
                 // Now we need to check if the token has a valid security algorithm
-                if (validatedToken is JwtSecurityToken jwtSecurityToken)
+                if (securityToken is JwtSecurityToken jwtSecurityToken)
                 {
                     var result = jwtSecurityToken.Header.Alg.Equals(SecurityAlgorithms.HmacSha256, StringComparison.InvariantCultureIgnoreCase);
 
@@ -152,20 +153,6 @@ namespace Sample.Application.Services.Users
                         IsSuccess = false
                     };
                 }
-
-                // we are getting here the jwt token id
-                var jti = principal.Claims.SingleOrDefault(x => x.Type == JwtRegisteredClaimNames.Jti).Value;
-
-                // check the id that the recieved token has against the id saved in the db
-                if (storedRefreshToken.JwtId != jti)
-                {
-                    return new ApiResult()
-                    {
-                        Message = "the token doenst mateched the saved token",
-                        IsSuccess = false
-                    };
-                }
-
                 storedRefreshToken.IsUsed = true;
                 _refreshTokenRepository.Update(storedRefreshToken);
 

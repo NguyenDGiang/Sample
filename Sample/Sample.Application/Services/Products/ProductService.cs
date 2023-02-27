@@ -10,6 +10,7 @@ using Sample.Shared.Dtos.Attributes;
 using Sample.Shared.Dtos.Categories;
 using Sample.Shared.Dtos.Products;
 using Sample.Shared.Dtos.ProductVariants;
+using Sample.Shared.Dtos.UploadFiles;
 using Sample.Shared.Extensions;
 using Sample.Shared.SeedWorks;
 
@@ -71,7 +72,7 @@ namespace Sample.Application.Services.Products
         public ProductDto Get(Guid id)
         {
             var product = _productRepository
-                .FindAll(x => x.ProductVariant, y => y.Attribute, z => z.Category)
+                .FindAll(x => x.ProductVariant, y => y.Attribute, z => z.Category,x => x.UploadFile)
                 .Select(x => new ProductDto()
                 {
                     Id = x.Id,
@@ -91,7 +92,8 @@ namespace Sample.Application.Services.Products
                             AttributeProductDtos = _mapper.Map<List<AttributeProductDto>>(attr.AttributeProduct.ToList())
                         }).ToList(),
                     ProductVariants = _mapper.Map<List<ProductVariantDto>>(x.ProductVariant.ToList()),
-                    CategoryDto = _mapper.Map<CategoryDto>(x.Category)
+                    CategoryDto = _mapper.Map<CategoryDto>(x.Category),
+                    FileDtos = _mapper.Map<List<FileDto>>(x.UploadFile)
                 }).FirstOrDefault();
             if (product == null)
             {
@@ -128,6 +130,23 @@ namespace Sample.Application.Services.Products
                 });
             return products.ToList();
         }
+
+        public List<GetHomeProductCategoryDto> GetHomeProductCategory()
+        {
+            var products = _categoryRepository
+                .FindAll(x => x.Products)
+                .Select(z => new GetHomeProductCategoryDto()
+                {
+                    CategoryName = z.Name,
+                    productDtos = z.Products.Select(x => new ProductHomeDto()
+                    {
+                        Name = x.Name,  
+                        ProductVariants = _mapper.Map<List<ProductVariantDto>>(x.ProductVariant.ToList()) 
+                    }).Take(5).ToList()
+                });
+            return products.ToList();
+        }
+
         public PagingList<ProductDto> GetPaging(PagingParamesters pagingParamesters)
         {
             var products = _productRepository

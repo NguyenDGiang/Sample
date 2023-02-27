@@ -67,7 +67,7 @@ namespace Sample.DataAccess.Repositories
             return items.Where(predicate);
         }
 
-        public async void Add(T entity)
+        public void Add(T entity)
         {
             try
             {

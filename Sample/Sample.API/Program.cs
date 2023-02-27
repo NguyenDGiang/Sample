@@ -22,7 +22,12 @@ builder.Services.AddJwt(builder.Configuration);
 builder.Services.AddSwagger();
 builder.Services.AddDataAccess(builder.Configuration);
 builder.Services.AddService();
+builder.Services.AddHostedService<QueuedHostedService>();
+builder.Services.AddSingleton<IBackgroundTaskQueue, BackgroundTaskQueue>();
 var app = builder.Build();
+
+
+
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

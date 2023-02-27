@@ -1,7 +1,9 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Sample.Application.Exceptions;
+using Sample.Application.Services.Categories;
 using Sample.Application.Services.Products;
+using Sample.Shared.Dtos.AttributeProducts;
 using Sample.Shared.Dtos.Products;
 using Sample.Shared.SeedWorks;
 
@@ -12,14 +14,25 @@ namespace Sample.API.Controllers
     public class ProductController : ControllerBase
     {
         private readonly IProductService _productService;
-        public ProductController(IProductService productService)
+        private readonly ICategoryService _categoryService;
+        private readonly IBackgroundTaskQueue _taskQueue;
+        public ProductController(IProductService productService,
+            IBackgroundTaskQueue taskQueue)
         {
             _productService = productService;
+            _taskQueue = taskQueue;
         }
         [HttpPost()]
         public IActionResult Post(CreateProductDto product)
         {
-            return Ok(_productService.Create(product));
+            var pr = _productService.Create(product);
+            _taskQueue.QueueBackgroundWorkItem(async s => await BuildWorkItemAsync(product));
+            return Ok(pr);
+        }
+        private async Task BuildWorkItemAsync(CreateProductDto product)
+        {
+            
+           _productService.Create(product);
         }
         [HttpPost("ProductVariant")]
         public IActionResult Post(CreateProductMappingAttributeDto createProductMappingAttributeDto)
@@ -50,6 +63,11 @@ namespace Sample.API.Controllers
         public IActionResult Get(Guid Id)
         {
             return Ok(_productService.Get(Id));
+        }
+        [HttpGet("GetHomeProductCategory")]
+        public IActionResult GetHomeProductCategory()
+        {
+            return Ok(_productService.GetHomeProductCategory());
         }
     }
 }

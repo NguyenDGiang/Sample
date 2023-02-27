@@ -13,5 +13,6 @@ namespace Sample.Core.Entities
     {
         public string Name { get; set; }
         public int? ParentId { get; set; }
+        public ICollection<Product> Products { get; set; }
     }
 }

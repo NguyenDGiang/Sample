@@ -14,6 +14,7 @@ namespace Sample.Core.Entities
         public Category? Category { get; set; }  
         public ICollection<Attribute> Attribute  { get; set; }  
         public ICollection<ProductVariant> ProductVariant { get; set; }
-        
+        public ICollection<UploadFile> UploadFile { get; set; }
+
     }
 }

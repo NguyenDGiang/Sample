@@ -20,6 +20,7 @@ namespace Sample.Application.MappingProfiles
         {
             CreateMap<CreateProductDto, Product>();
             CreateMap<UploadFile, InsertUploadFileRequest>();
+            CreateMap<UploadFile, FileDto>();
             CreateMap<Category, CategoryDto>();
             CreateMap<Product, ProductReponse>();
             CreateMap<Product, ProductDto>();

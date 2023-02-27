@@ -20,5 +20,6 @@ namespace Sample.Application.Services.Products
         ApiResult<UpdateProductDto> Update(UpdateProductDto product);
         ApiResult<ProductDto> Update(Guid id);
         ApiResult Delete(Guid id);
+        List<GetHomeProductCategoryDto> GetHomeProductCategory();
     }
 }

@@ -1,0 +1,15 @@
+E:\Sample\Sample\Sample.Shared\bin\Release\net6.0\Sample.Shared.deps.json
+E:\Sample\Sample\Sample.Shared\bin\Release\net6.0\Sample.Shared.dll
+E:\Sample\Sample\Sample.Shared\bin\Release\net6.0\Sample.Shared.pdb
+E:\Sample\Sample\Sample.Shared\bin\Release\net6.0\Sample.Core.dll
+E:\Sample\Sample\Sample.Shared\bin\Release\net6.0\Sample.Core.pdb
+E:\Sample\Sample\Sample.Shared\obj\Release\net6.0\Sample.Shared.csproj.AssemblyReference.cache
+E:\Sample\Sample\Sample.Shared\obj\Release\net6.0\Sample.Shared.GeneratedMSBuildEditorConfig.editorconfig
+E:\Sample\Sample\Sample.Shared\obj\Release\net6.0\Sample.Shared.AssemblyInfoInputs.cache
+E:\Sample\Sample\Sample.Shared\obj\Release\net6.0\Sample.Shared.AssemblyInfo.cs
+E:\Sample\Sample\Sample.Shared\obj\Release\net6.0\Sample.Shared.csproj.CoreCompileInputs.cache
+E:\Sample\Sample\Sample.Shared\obj\Release\net6.0\Sample.Shared.csproj.CopyComplete
+E:\Sample\Sample\Sample.Shared\obj\Release\net6.0\Sample.Shared.dll
+E:\Sample\Sample\Sample.Shared\obj\Release\net6.0\refint\Sample.Shared.dll
+E:\Sample\Sample\Sample.Shared\obj\Release\net6.0\Sample.Shared.pdb
+E:\Sample\Sample\Sample.Shared\obj\Release\net6.0\ref\Sample.Shared.dll
