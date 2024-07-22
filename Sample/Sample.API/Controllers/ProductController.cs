@@ -5,7 +5,6 @@ using Sample.Application.Services.Categories;
 using Sample.Application.Services.Products;
 using Sample.Shared.Dtos.AttributeProducts;
 using Sample.Shared.Dtos.Products;
-using Sample.Shared.SeedWorks;
 
 namespace Sample.API.Controllers
 {
@@ -34,6 +33,7 @@ namespace Sample.API.Controllers
             
            _productService.Create(product);
         }
+<<<<<<< HEAD
         [HttpPost("ProductVariant")]
         public IActionResult Post(CreateProductMappingAttributeDto createProductMappingAttributeDto)
         {
@@ -69,5 +69,7 @@ namespace Sample.API.Controllers
         {
             return Ok(_productService.GetHomeProductCategory());
         }
+=======
+>>>>>>> parent of acb1289 (update)
     }
 }

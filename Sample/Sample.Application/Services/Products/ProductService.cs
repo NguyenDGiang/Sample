@@ -1,16 +1,13 @@
 ﻿using AutoMapper;
 using Sample.Application.Exceptions;
-using Sample.Application.Services.Categories;
 using Sample.Core.Entities;
-using Sample.DataAccess.Repositories.Categories;
 using Sample.DataAccess.Repositories.Products;
-using Sample.DataAccess.Repositories.ProductVariants;
-using Sample.Shared.Dtos.AttributeProducts;
-using Sample.Shared.Dtos.Attributes;
-using Sample.Shared.Dtos.Categories;
 using Sample.Shared.Dtos.Products;
+<<<<<<< HEAD
 using Sample.Shared.Dtos.ProductVariants;
 using Sample.Shared.Dtos.UploadFiles;
+=======
+>>>>>>> parent of acb1289 (update)
 using Sample.Shared.Extensions;
 using Sample.Shared.SeedWorks;
 
@@ -18,59 +15,39 @@ namespace Sample.Application.Services.Products
 {
     public class ProductService : IProductService
     {
-        private readonly IProductVariantRepository _productVariantRepository;
-        private readonly ICategoryRepository _categoryRepository;
         private readonly IProductRepository _productRepository;
         private readonly IMapper _mapper;
-        public ProductService(
-            IProductRepository productRepository, 
-            IMapper mapper,
-            IProductVariantRepository productVariantRepository,
-            ICategoryRepository categoryRepository)
+        public ProductService(IProductRepository productRepository, IMapper mapper)
         {
             _productRepository = productRepository;
             _mapper = mapper;
-            _productVariantRepository = productVariantRepository;
-            _categoryRepository = categoryRepository; 
         }
-        public ApiResult<CreateProductDto> Create(CreateProductDto createProduct)
+        public ApiResult<ProductReponse> Create(CreateProductDto createProduct)
         {
             var valid = createProduct.CheckValidation<CreateProductDto>();
             if (valid.IsSuccess == false)
             {
-                return new ApiErrorResult<CreateProductDto>(false, 400, valid.Message);
+                return new ApiErrorResult<ProductReponse>(false, 400, valid.Message);
             }
             var product = _mapper.Map<Product>(createProduct);
             _productRepository.Add(product);
-            return new ApiSuccessResult<CreateProductDto>(true, "Thêm mới thành công", 200, createProduct);
+            return new ApiSuccessResult<ProductReponse>(true, "Thêm mới thành công", 200, null);
             
         }
 
-        public ApiResult<CreateProductMappingAttributeDto> CreateMappingAttribute(CreateProductMappingAttributeDto createProductMappingAttributeDto)
+        public List<ProductReponse> Get(Guid id)
         {
-            var valid = createProductMappingAttributeDto.CheckValidation<CreateProductMappingAttributeDto>();
-            if (valid.IsSuccess == false)
-            {
-                return new ApiErrorResult<CreateProductMappingAttributeDto>(false, 400, valid.Message);
-            }
-            var productVariant = _mapper.Map<ProductVariant>(createProductMappingAttributeDto);
-            _productVariantRepository.Add(productVariant);
-            return new ApiSuccessResult<CreateProductMappingAttributeDto>(true, "Thêm mới thành công", 200, createProductMappingAttributeDto);
+            throw new NotImplementedException();
         }
 
-        public ApiResult Delete(Guid id)
+        public List<ProductReponse> GetAll()
         {
-            var product = _productRepository.FindById(id);
-            if (product == null)
-            {
-                throw new BadRequestException("Sản phẩm không tồn tại");
-            }
-            _productRepository.Remove(product);
-            return new ApiResult(true, "Xóa thành công", 200);
+            throw new NotImplementedException();
         }
 
-        public ProductDto Get(Guid id)
+        public List<ProductReponse> GetPaging()
         {
+<<<<<<< HEAD
             var product = _productRepository
                 .FindAll(x => x.ProductVariant, y => y.Attribute, z => z.Category,x => x.UploadFile)
                 .Select(x => new ProductDto()
@@ -100,10 +77,14 @@ namespace Sample.Application.Services.Products
                 throw new BadRequestException("Sản phẩm không tồn tại");
             }
             return _mapper.Map<ProductDto>(product);
+=======
+            throw new NotImplementedException();
+>>>>>>> parent of acb1289 (update)
         }
 
-        public List<ProductDto> GetAll()
+        public ApiResult<ProductReponse> Update(CreateProductDto product)
         {
+<<<<<<< HEAD
             var products = _productRepository
                 .FindAll(x => x.ProductVariant, y => y.Attribute, z => z.Category)
                 .Select(x => new ProductDto()
@@ -176,29 +157,14 @@ namespace Sample.Application.Services.Products
             var productCount = products.Count();
             var productPaing = products.Skip((pagingParamesters.PageNumber - 1) * pagingParamesters.PagingSize).Take(pagingParamesters.PagingSize).ToList();
             return new PagingList<ProductDto>(productPaing, pagingParamesters.PagingSize, pagingParamesters.PageNumber, productCount, productCount / pagingParamesters.PagingSize);
+=======
+            throw new NotImplementedException();
+>>>>>>> parent of acb1289 (update)
         }
 
-        public ApiResult<UpdateProductDto> Update(UpdateProductDto product)
+        public ApiResult<ProductReponse> Update(Guid id)
         {
-            var isValid = product.CheckValidation();
-            var mapperProduct = _mapper.Map<Product>(product);
-            if (isValid.IsSuccess == false)
-            {
-                return new ApiErrorResult<UpdateProductDto>(false, 400, isValid.Message);
-            }
-            _productRepository.Update(mapperProduct);
-            return new ApiResult<UpdateProductDto>(true, "Cập nhật thành công", 200, product);
-        }
-
-        public ApiResult<ProductDto> Update(Guid id)
-        {
-            var product = _productRepository.FindById(id);
-            if (product == null)
-            {
-                throw new BadRequestException("Sản phẩm không tồn tại");
-            }
-            _productRepository.Update(product);
-            return new ApiResult<ProductDto>(true , "Cập nhật thành công", 200, _mapper.Map<ProductDto>(product)); 
+            throw new NotImplementedException();
         }
     }
 }

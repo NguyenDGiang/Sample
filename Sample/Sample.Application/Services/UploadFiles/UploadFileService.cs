@@ -2,9 +2,7 @@
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Sample.Core.Entities;
-using Sample.DataAccess.Repositories.Products;
 using Sample.DataAccess.Repositories.UploadFiles;
-using Sample.Shared.Dtos.Products;
 using Sample.Shared.Dtos.UploadFiles;
 using Sample.Shared.SeedWorks;
 using Sample.Shared.Types;
@@ -18,58 +16,36 @@ namespace Sample.Application.Services.UploadFiles
 {
     public class UploadFileService : IUploadFileService
     {
-        private readonly IProductRepository _productRepository;
         private readonly IUploadFileRepository _uploadFileRepository;
         private readonly IHostingEnvironment _hostingEnvironment;
         private readonly IMapper _mapper;
-        public UploadFileService(
-            IUploadFileRepository uploadFileRepository, 
-            IHostingEnvironment hostingEnvironment,
-            IMapper mapper,
-            IProductRepository ProductRepository)
+        public UploadFileService(IUploadFileRepository uploadFileRepository, 
+            IHostingEnvironment hostingEnvironment
+            , IMapper mapper)
         {
             _uploadFileRepository = uploadFileRepository;
             _hostingEnvironment = hostingEnvironment;
             _mapper = mapper;
-            _productRepository = ProductRepository; 
         }
 
-        public ApiResult<UploadFile> Insert(UploadFileProductDto uploadFileProductDto)
+        public ApiResult<UploadFile> Insert(IFormFile file)
         {
-            try
+            var fileType = Path.GetExtension(file.FileName);
+            UploadFile insertUploadFileRequest = new UploadFile()
             {
-                _uploadFileRepository.BeginTransactionAsync();
-                var fileType = Path.GetExtension(uploadFileProductDto.File.FileName);
-                var product = _productRepository.FindById(uploadFileProductDto.ProductId);
-                if (product == null)
-                {
-                    return new ApiErrorResult<UploadFile>(false, 400, "Không tồn tại");
-                }
-                UploadFile insertUploadFileRequest = new UploadFile()
-                {
-                    Name = uploadFileProductDto.File.FileName,
-                    Type = fileType,
-                    Path = uploadFileProductDto.File.Name,
-                    Product = product
-                };
-                if (FileTypeSupport.Image.Contains(fileType))
-                {
-                    InsertImage(uploadFileProductDto.File);
-                }
-                _uploadFileRepository.Add(insertUploadFileRequest);
-                _uploadFileRepository.EndTransactionAsync();
-                return new ApiSuccessResult<UploadFile>(true, "Thêm Thành Công", 200, insertUploadFileRequest);
-            }
-            catch (Exception ex)
+                Name = file.FileName,
+                Type = fileType,
+                Path = file.Name
+            };
+            if (FileTypeSupport.Document.Contains(fileType))
             {
-                _uploadFileRepository.RollbackTransactionAsync();
-                return new ApiErrorResult<UploadFile>(false, 500, "Lỗi Khi Xóa");
+                InsertDocument(file);
             }
-            
+            return new ApiSuccessResult<UploadFile>(true,"Thêm Thành Công",200, insertUploadFileRequest);
         }
-        private void InsertImage(IFormFile file)
+        private void InsertDocument(IFormFile file)
         {
-            var uploads = Path.Combine(_hostingEnvironment.WebRootPath, "Uploads\\"+file.FileName);
+            var uploads = Path.Combine(_hostingEnvironment.WebRootPath, "Uploads\\"+file.Name);
             if (file.Length > 0 && file.Length < 10485760)
             {
                 using (var stream = new FileStream(uploads, FileMode.Create))
@@ -77,7 +53,6 @@ namespace Sample.Application.Services.UploadFiles
                     file.CopyTo(stream);
                 }
             }
-            //_uploadFileRepository.
         }
     }
 }

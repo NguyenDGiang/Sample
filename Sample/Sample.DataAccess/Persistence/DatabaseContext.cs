@@ -14,21 +14,10 @@ namespace Sample.DataAccess.Persistence
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            var decimalProps = modelBuilder.Model
-                .GetEntityTypes()
-                .SelectMany(t => t.GetProperties())
-                .Where(p => (System.Nullable.GetUnderlyingType(p.ClrType) ?? p.ClrType) == typeof(decimal));
-
-            foreach (var property in decimalProps)
-            {
-                property.SetPrecision(18);
-                property.SetScale(2);
-            }
-            modelBuilder.Entity<Product>().Property(x => x.Id).HasDefaultValueSql("NEWID()");
             base.OnModelCreating(modelBuilder);
             modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
         }
-        public override int SaveChanges()
+        public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = new())
         {
             foreach(var entry in ChangeTracker.Entries<IAuditable>())
             {
@@ -42,7 +31,7 @@ namespace Sample.DataAccess.Persistence
                         break;
                 }
             }
-            return  base.SaveChanges();
+            return await base.SaveChangesAsync();
         }
 
         //Dbset
@@ -50,9 +39,5 @@ namespace Sample.DataAccess.Persistence
         public DbSet<Product> Products { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<UploadFile> UploadFiles { get; set; }
-        public DbSet<Sample.Core.Entities.Attribute> Attributes { get; set; }
-        public DbSet<AttributeProduct> AttributeProducts { get; set; }
-        public DbSet<ProductVariant> ProductVariants { get; set; }
-        public DbSet<RefreshToken> RefreshTokens { get; set; }
     }
 }

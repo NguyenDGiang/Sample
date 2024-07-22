@@ -5,29 +5,19 @@ using Sample.DataAccess.Repositories.Users;
 using Sample.Shared.Security;
 using System.Security.Authentication;
 using Sample.Application.Exceptions;
-using Sample.Core.Entities;
-using Sample.DataAccess.Repositories.RefreshTokens;
-using Sample.Shared.SeedWorks;
-using System.IdentityModel.Tokens.Jwt;
-using Microsoft.IdentityModel.Tokens;
-using System.Text;
 
 namespace Sample.Application.Services.Users
 {
     public class UserService : IUserService
     {
         private readonly IUserRepository _userRepository;
-        private readonly IRefreshTokenRepository _refreshTokenRepository;
         private readonly IConfiguration _configuration;
-        public UserService(IUserRepository userRepository, 
-            IConfiguration configuration,
-            IRefreshTokenRepository refreshTokenRepository)
+        public UserService(IUserRepository userRepository, IConfiguration configuration)
         {
             _userRepository = userRepository;
-            _configuration = configuration;
-            _refreshTokenRepository = refreshTokenRepository;
+            _configuration = configuration; 
         }
-        public async Task<ApiResult> LoginAsync(LoginDto login)
+        public async Task<ReponseLoginDto> LoginAsync(LoginDto login)
         {
             var user = _userRepository.FindSingle(x => x.UserName.Equals(login.UserName));
             
@@ -37,31 +27,20 @@ namespace Sample.Application.Services.Users
             }
             if (Cryptography.VerifyPassword(login.Password, user.StoreSalt, user.Password))
             {
-                var Token = JwtHelper.GenerateToken(user, _configuration);
-                var refreshToken = new RefreshToken()
-                {
-                    JwtId = Token,
-                    IsUsed = false,
-                    UserId = user.Id,
-                    AddedDate = DateTime.UtcNow,
-                    ExpiryDate = DateTime.UtcNow.AddYears(1),
-                    IsRevoked = false,
-                    Token = RandomString(25) + Guid.NewGuid()
-                };
-                _refreshTokenRepository.Add(refreshToken);
-                return new ApiResult() {IsSuccess = true, RefreshToken = refreshToken.Token, Token =  Token};
+                ReponseLoginDto reponseLoginDto = new ReponseLoginDto();
+                reponseLoginDto.Token = JwtHelper.GenerateToken(user, _configuration);
+                return reponseLoginDto;
             }
-
             //var signInResult = await _signInManager.PasswordSignInAsync(user, loginUserModel.Password, false, false);
 
             //if (!signInResult.Succeeded)
             //{
             //    throw new BadRequestException("Username or password is incorrect");
             //}
-            
 
             throw new AuthenticationException("Incorrect username or password");
         }
+<<<<<<< HEAD
         public string RandomString(int length)
         {
             var random = new Random();
@@ -184,5 +163,7 @@ namespace Sample.Application.Services.Users
             dtDateTime = dtDateTime.AddSeconds(unixTimeStamp).ToUniversalTime();
             return dtDateTime;
         }
+=======
+>>>>>>> parent of acb1289 (update)
     }
 }

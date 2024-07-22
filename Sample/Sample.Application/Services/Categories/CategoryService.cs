@@ -58,44 +58,25 @@ namespace Sample.Application.Services.Categories
             }
         }
 
-        public List<CategoryDto> GetAll()
+        public List<CategoryReponse> GetAll()
         {
             List<Category> categories = _categoryRepository.FindAll().ToList();
-            return GetCategoriesReCursive(_mapper.Map< List<Category>, List<CategoryDto>>(categories),0);
+            return GetReCursive(_mapper.Map< List<Category>, List<CategoryReponse>>(categories),0);
         }
-        public List<CategoryDto> GetCategoriesReCursive(List<CategoryDto> categories, int Id)
+        public List<CategoryReponse> GetReCursive(List<CategoryReponse> categories, int Id)
         {
-            List<CategoryDto> result = new List<CategoryDto>();
+            List<CategoryReponse> result = new List<CategoryReponse>();
             foreach (var item in categories.Where(x=> Id == 0 ? x.ParentId == 0: x.ParentId == Id))
             {
-                CategoryDto category = new CategoryDto();
+                CategoryReponse category = new CategoryReponse();
                 category.Id = item.Id;
                 category.Name = item.Name;  
                 category.ParentId = item.ParentId;
-                category.CategoryChildren = GetCategoriesReCursive(categories.ToList(),item.Id);
+                category.CategoryChildren =  GetReCursive(categories.ToList(),item.Id);
                 result.Add(category);
                
             }
             return result;
-        }
-
-        public CategoryDto GetCategoriesReCursive(Category category)
-        {
-            var categoriesChilrend = _categoryRepository.FindAll().ToList();
-            CategoryDto categoryReponse = new CategoryDto();
-            categoryReponse.Id = category.Id;
-            categoryReponse.CategoryChildren = GetCategoriesReCursive(_mapper.Map<List<CategoryDto>>(categoriesChilrend), category.Id);
-            categoryReponse.ParentId =  category.ParentId;
-            category.Name = category.Name;
-            return categoryReponse;
-        }
-
-        public PagingList<CategoryDto> GetPaging(PagingParamesters pagingParamesters)
-        {
-            var categories = _categoryRepository.FindAll();
-            var categoryCount = categories.Count();
-            var categoryPaging = categories.Skip((pagingParamesters.PageNumber - 1) * pagingParamesters.PagingSize).Take(pagingParamesters.PagingSize).ToList();
-            return new PagingList<CategoryDto>(_mapper.Map<List<CategoryDto>>(categoryPaging), pagingParamesters.PagingSize, pagingParamesters.PageNumber, categoryCount, categoryCount / pagingParamesters.PagingSize);
         }
 
         public ApiResult<UpdateCategoryDto> Update(UpdateCategoryDto categoryDto)

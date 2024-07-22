@@ -105,7 +105,6 @@ namespace Sample.DataAccess.Repositories
             }
 
             var result = _appContext.Set<T>().Update(dbEntity);
-            _appContext.SaveChanges();  
             return result.Entity;
         }
 

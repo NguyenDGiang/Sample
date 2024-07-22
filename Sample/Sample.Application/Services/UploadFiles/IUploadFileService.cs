@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Sample.Core.Entities;
-using Sample.Shared.Dtos.Products;
 using Sample.Shared.SeedWorks;
 using System;
 using System.Collections.Generic;
@@ -11,6 +10,6 @@ namespace Sample.Application.Services.UploadFiles
 {
     public interface IUploadFileService
     {
-        ApiResult<UploadFile> Insert(UploadFileProductDto uploadFileProductDto);
+        ApiResult<UploadFile> Insert(IFormFile file);
     }
 }

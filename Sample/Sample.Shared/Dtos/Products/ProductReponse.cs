@@ -8,9 +8,12 @@ using System.Threading.Tasks;
 
 namespace Sample.Shared.Dtos.Products
 {
-    public class ProductReponse: EntityAuditBase<Guid>
+    public class ProductReponse: EntityAuditBase<ProductDto>
     {
         public string Name { get; set; }
-        public Category? Category { get; set; }
+        public string SKU { get; set; }
+        public decimal Price { get; set; }
+        public string Image { get; set; }
+        public Category Category { get; set; }
     }
 }

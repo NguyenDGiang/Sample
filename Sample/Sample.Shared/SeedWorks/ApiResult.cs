@@ -26,25 +26,4 @@ namespace Sample.Shared.SeedWorks
             StatusCode = statusCode;
         }
     }
-    public class ApiResult
-    {
-        public bool IsSuccess { get; set; }
-       
-        public int StatusCode { get; set; }
-        public string Message { get; set; }
-        public string Token { get; set; }
-        public string RefreshToken { get; set; }
-        public ApiResult(bool isSuccess, string message, int statusCode)
-        {
-            IsSuccess = isSuccess;
-            StatusCode = statusCode;
-            Message = message;
-        }
-        public ApiResult(string token, string refreshToken)
-        {
-            Token = token;
-            RefreshToken = refreshToken;
-        }
-        public ApiResult() { }
-    }
 }

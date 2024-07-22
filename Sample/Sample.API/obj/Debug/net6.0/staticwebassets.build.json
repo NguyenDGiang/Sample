@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "v/DOEp+MDi36x7cgdsTw7y68N7O0fJo0q7/Mvs/UNUM=",
+  "Hash": "7qepCf/QK5OmNMHCn/b2137lyd7fcUyjvTW5CPGeQ1s=",
   "Source": "Sample.API",
   "BasePath": "_content/Sample.API",
   "Mode": "Default",
@@ -17,23 +17,6 @@
   ],
   "Assets": [
     {
-      "Identity": "E:\\Sample\\Sample\\Sample.API\\wwwroot\\Uploads\\download.jpg",
-      "SourceId": "Sample.API",
-      "SourceType": "Discovered",
-      "ContentRoot": "E:\\Sample\\Sample\\Sample.API\\wwwroot\\",
-      "BasePath": "_content/Sample.API",
-      "RelativePath": "Uploads/download.jpg",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\Uploads\\download.jpg"
-    },
-    {
       "Identity": "E:\\Sample\\Sample\\Sample.API\\wwwroot\\Uploads\\file",
       "SourceId": "Sample.API",
       "SourceType": "Discovered",
@@ -49,23 +32,6 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\Uploads\\file"
-    },
-    {
-      "Identity": "E:\\Sample\\Sample\\Sample.API\\wwwroot\\Uploads\\laptop-man-hinh-full-hd-la-gi-kinh-nghiem-chon-mu-2.jpg",
-      "SourceId": "Sample.API",
-      "SourceType": "Discovered",
-      "ContentRoot": "E:\\Sample\\Sample\\Sample.API\\wwwroot\\",
-      "BasePath": "_content/Sample.API",
-      "RelativePath": "Uploads/laptop-man-hinh-full-hd-la-gi-kinh-nghiem-chon-mu-2.jpg",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\Uploads\\laptop-man-hinh-full-hd-la-gi-kinh-nghiem-chon-mu-2.jpg"
     },
     {
       "Identity": "E:\\Sample\\Sample\\Sample.API\\wwwroot\\Uploadsfile",

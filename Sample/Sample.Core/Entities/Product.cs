@@ -12,9 +12,13 @@ namespace Sample.Core.Entities
     {
         public string Name { get; set; }
         public Category? Category { get; set; }  
+<<<<<<< HEAD
         public ICollection<Attribute> Attribute  { get; set; }  
         public ICollection<ProductVariant> ProductVariant { get; set; }
         public ICollection<UploadFile> UploadFile { get; set; }
 
+=======
+        
+>>>>>>> parent of acb1289 (update)
     }
 }

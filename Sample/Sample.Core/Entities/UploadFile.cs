@@ -1,5 +1,4 @@
 ﻿using Sample.Shared.Common;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Sample.Core.Entities
 {
@@ -9,7 +8,5 @@ namespace Sample.Core.Entities
         public string Path { get; set; }
         public string Type { get; set; }
         public Product? Product { get; set; }
-        [ForeignKey("Product")]
-        public Guid ProductId { get; set; }
     }
 }
